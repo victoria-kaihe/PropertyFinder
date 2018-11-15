@@ -2,8 +2,13 @@
 
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { StackNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
+
+class SearchPage extends React.Component {
+  static navigationOptions = {
+    title: 'Property Finder'
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -22,3 +27,9 @@ const styles = StyleSheet.create({
     marginTop: 65,
   },
 })
+
+const App = StackNavigator({
+  Home: { screen: SearchPage },
+})
+
+export default App
