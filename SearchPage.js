@@ -61,12 +61,16 @@ export default class SearchPage extends Component {
     const query = urlForQueryAndPage('place_name', this.state.searchString, 1)
     this._executeQuery(query)
   }
-  _handleResponse = (response) => {
-    this.setState({ isLoading: false , message: '' })
+  _handleResponse(response) {
+    this.setState({ isLoading: false })
     if (response.application_response_code.substr(0, 1) === '1') {
-      console.log('Properties found: ' + response.listings.length)
+      this.props.navigator.push({
+        title: 'Results',
+        component: SearchResults,
+        passProps: {listings: response.listings}
+      })
     } else {
-      this.setState({ message: 'Location not recognised; please try again.'})
+      this.setState({ message: 'Location not recognized please try again.'})
     }
   }
 
