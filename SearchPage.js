@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native'
+import SearchResults from './SearchResults'
 
 function urlForQueryAndPage(key, value, pageNumber) {
   const data = {
@@ -49,7 +50,7 @@ export default class SearchPage extends Component {
     this.setState({ isLoading : true})
     fetch(query)
     .then(response => response.json())
-    .then(jason => this._handleResponse(json.response))
+    .then(json => this._handleResponse(json.response))
     .catch(error =>
       this.setState({
         isLoading: false,
@@ -61,7 +62,7 @@ export default class SearchPage extends Component {
     this._executeQuery(query)
   }
   _handleResponse = (response) => {
-    this.setState({ isLoading: flase , message: '' })
+    this.setState({ isLoading: false , message: '' })
     if (response.application_response_code.substr(0, 1) === '1') {
       console.log('Properties found: ' + response.listings.length)
     } else {
