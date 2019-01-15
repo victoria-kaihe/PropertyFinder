@@ -31,6 +31,9 @@ export default class SearchPage extends Component {
        title='Go'
        />
        </View>
+       <Image source={require('./app/resources/house.png')} 
+       style={styles.image}/>
+
       </View>
     )
   }
