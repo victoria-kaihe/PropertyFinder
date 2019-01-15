@@ -21,7 +21,7 @@ export default class SearchPage extends Component {
   _onSearchTextChanged = (event) => {
     console.log('_onSearchTextChanged')
     this.setState({ searchString: event.nativeEvent.text })
-    console.log('Current: '+this.state.searchString+', Next: '+event.nativeEvent,text)
+    console.log('Current: '+this.state.searchString+', Next: '+event.nativeEvent.text)
   }
   render() {
     return (
