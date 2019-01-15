@@ -34,9 +34,11 @@ export default class SearchPage extends Component {
     super(props)
     this.state = {
       searchString: 'London',
-      isLoading: false
+      isLoading: false,
+      message: '',
     }
   }
+
   _onSearchTextChanged = (event) => {
     console.log('_onSearchTextChanged')
     this.setState({ searchString: event.nativeEvent.text })
@@ -50,6 +52,7 @@ export default class SearchPage extends Component {
     const query = urlForQueryAndPage('place_name', this.state.searchString, 1)
     this._executeQuery(query)
   }
+
   render() {
     const spinner = this.state.isLoading ? <ActivityIndicator size='large' /> : null
     return (
@@ -75,6 +78,9 @@ export default class SearchPage extends Component {
        <Image source={require('./app/resources/house.png')} 
        style={styles.image} />
        {spinner}
+       <Text style={styles.description}>
+       {this.state.message}
+       </Text>
       </View>
     )
   }
